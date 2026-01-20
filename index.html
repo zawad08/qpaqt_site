@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qpaqt - Digital Growth & Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #0ea5e9;
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--bg-darker) 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            animation: gradientPulse 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes gradientPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typewriter {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            min-height: 2em;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--primary);
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: var(--bg-card);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .tech-item span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.25);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-bio {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .portfolio-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .typewriter {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+            }
+
+            .cta-button {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-card {
+                padding: 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .team-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .team-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+
+            .tech-item {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .social-links {
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .typewriter {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-card,
+            .service-card,
+            .team-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .service-icon {
+                font-size: 2rem;
+            }
+
+            .team-avatar {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-item span {
+                font-size: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            .social-links a {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .about-grid,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="gradient-overlay"></div>
+
+    <header>
+        <nav>
+            <div class="logo">Qpaqt</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tech">Tech</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Qpaqt</h1>
+            <div class="typewriter" id="typewriter">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
+            <a href="#contact" class="cta-button">Start Your Growth Journey</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title fade-in">About Qpaqt</h2>
+        <div class="about-grid">
+            <div class="about-card fade-in">
+                <h3>🎯 Our Mission</h3>
+                <p>Empowering businesses to dominate digital landscapes through cutting-edge SEO strategies and innovative growth solutions. We transform online presence into measurable success.</p>
+            </div>
+            <div class="about-card fade-in">
+                <h3>🚀 Our Vision</h3>
+                <p>To become the go-to tech partner for startups and enterprises, expanding from SEO excellence into comprehensive digital solutions including web development, cloud infrastructure, and AI-powered tools.</p>
+            </div>
+            <div class="about-card fade-in">
+                <h3>📈 Growth Roadmap</h3>
+                <p>Starting with world-class SEO and digital growth services, we're rapidly expanding into web development, cloud solutions, SaaS products, and AI-driven automation to deliver complete digital ecosystems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2 class="section-title fade-in">Meet the Founders</h2>
+        <div class="team-grid">
+            <div class="team-card fade-in">
+                <div class="team-avatar">Z</div>
+                <h3>Zawad</h3>
+                <p class="team-role">Co-Founder</p>
+                <p class="team-bio">Driving innovation and strategic growth initiatives</p>
+            </div>
+            <div class="team-card fade-in">
+                <div class="team-avatar">S</div>
+                <h3>Sayeem</h3>
+                <p class="team-role">Co-Founder</p>
+                <p class="team-bio">Driving innovation and strategic growth initiatives</p>
+            </div>
+            <div class="team-card fade-in">
+                <div class="team-avatar">A</div>
+                <h3>Akash</h3>
+                <p class="team-role">Co-Founder</p>
+                <p class="team-bio">Driving innovation and strategic growth initiatives</p>
+            </div>
+            <div class="team-card fade-in">
+                <div class="team-avatar">A</div>
+                <h3>Adib</h3>
+                <p class="team-role">Co-Founder</p>
+                <p class="team-bio">Driving innovation and strategic growth initiatives</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title fade-in">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">🔍</div>
+                <h3>SEO Optimization</h3>
+                <p>Data-driven SEO strategies that boost rankings, increase organic traffic, and deliver sustainable growth. From keyword research to competitive analysis.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">⚙️</div>
+                <h3>Technical SEO</h3>
+                <p>Site architecture optimization, performance tuning, structured data implementation, and core web vitals enhancement for maximum search visibility.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">📝</div>
+                <h3>Content & Growth</h3>
+                <p>Strategic content creation, link building, and growth hacking techniques that establish authority and drive conversions at scale.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>Coming soon: Custom web applications, responsive design, and modern frameworks to bring your digital vision to life.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud Solutions</h3>
+                <p>Coming soon: Scalable cloud infrastructure, deployment automation, and serverless architectures for modern applications.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">🤖</div>
+                <h3>AI & SaaS Tools</h3>
+                <p>Coming soon: AI-powered automation tools and SaaS platforms that streamline workflows and enhance productivity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <h2 class="section-title fade-in">Tech Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-item fade-in">
+                <span>📊</span>
+                <p>Analytics</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>🔧</span>
+                <p>SEO Tools</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>💻</span>
+                <p>JavaScript</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>⚛️</span>
+                <p>React</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>🎨</span>
+                <p>Design</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>☁️</span>
+                <p>Cloud</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>🗄️</span>
+                <p>Database</p>
+            </div>
+            <div class="tech-item fade-in">
+                <span>🤖</span>
+                <p>AI/ML</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title fade-in">Case Studies</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">📈</div>
+                <div class="portfolio-content">
+                    <h3>E-commerce Growth</h3>
+                    <p>300% organic traffic increase in 6 months through comprehensive SEO strategy and content optimization.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">🚀</div>
+                <div class="portfolio-content">
+                    <h3>SaaS Startup Launch</h3>
+                    <p>Achieved #1 ranking for 15+ high-value keywords, driving qualified leads and accelerating user acquisition.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">💼</div>
+                <div class="portfolio-content">
+                    <h3>B2B Platform</h3>
+                    <p>Technical SEO overhaul resulting in 200% improvement in search visibility and 5x increase in demo requests.</p>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-image">🎯</div>
+                <div class="portfolio-content">
+                    <h3>Local Business Domination</h3>
+                    <p>Complete local SEO transformation with 10x growth in local search visibility and phone inquiries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <form class="contact-form fade-in" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">🐙</a>
+            <a href="#" aria-label="Instagram">📷</a>
+        </div>
+        <p style="color: var(--text-muted);">&copy; 2026 Qpaqt. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Typewriter Effect
+        const texts = [
+            "Amplify Your Digital Presence",
+            "Scale Your Organic Growth",
+            "Dominate Search Rankings",
+            "Future-Ready Tech Solutions"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedTextElement = document.getElementById('typed-text');
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+            }
+
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typeWriter, speed);
+        }
+
+        // Start typewriter on load
+        setTimeout(typeWriter, 500);
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
